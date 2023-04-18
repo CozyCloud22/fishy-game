@@ -1,8 +1,31 @@
+import csv
+import random
+
 #account for spelling (autocorrect)
+def fish(rod):
+    
+    allFiles = {
+        1: "C:\\Users\\dcnat\\OneDrive\\Desktop\\fishy-game\\data\\BambooRod.csv",
+        2: "C:\\Users\\dcnat\\OneDrive\\Desktop\\fishy-game\\data\\StoneRod.csv",
+        3: "C:\\Users\\dcnat\\OneDrive\\Desktop\\fishy-game\\data\\MetalRod.csv",
+        #4: "data/Tasty Rod.csv",
+        #5: "data/God Rod.csv"
+    }
+    
+    with open(allFiles[rod], newline = '') as csvfile:
+        fishreader = csv.reader(csvfile)
+        bigList = [fish for row in fishreader for fish in row]
+
+    randomFish = random.choice(bigList)
+
+    return randomFish
+
+
 def main():
     currency = 0;
     gameContinue = True;
-    print("Welcome to Cloudy's fishing village! There are 4 commands in the game. You can 'fish', 'inventory', 'store', or 'achievements'. \nThe commands will let you fish, check your inventory, check the store, or go to the achievements page respectively. Have fun!")
+    
+    '''print("Welcome to Cloudy's fishing village! There are 4 commands in the game. You can 'fish', 'inventory', 'store', or 'achievements'. \nThe commands will let you fish, check your inventory, check the store, or go to the achievements page respectively. Have fun!")
     print("To exit the game, type 'exit'.")
     
     while(gameContinue == True):
@@ -24,7 +47,8 @@ def main():
                 gameContinue = False;
             else:
                 print("That was an invalid response. Please try again.")
-            
+            '''
+    print(fish(1))
             
             
 
