@@ -36,8 +36,6 @@ rodPrices = {
     "Metal Rod": 500
 }
 
-#REMEMBER FOR FINAL VERSION TO PUT THE ALTERNATE PATH DOWN
-
 #function for the fish action
 def fish(rod):
     
@@ -190,6 +188,7 @@ def main():
             elif(userInput == "store"):
                 print(storeContent())
             elif(userInput == "exit"):
+                print("\nThank you for playing! Made by Darrian Chen!")
                 gameContinue = False;
             else:
                 print("That was an invalid response. Please try again.")
