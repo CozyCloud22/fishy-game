@@ -1,9 +1,18 @@
 import csv
 import random
 
+currency = 0
+
+fishInventory = {"trout": 0, "salmon": 0, "bass": 3, "tuna": 0, "marlin": 0, "swordfish": 0, "pike": 0, "catfish": 0, }
+
+#REMEMBER FOR FINAL VERSION TO PUT THE ALTERNATE PATH DOWN
+
 #account for spelling (autocorrect)
+
+#function for the fish action
 def fish(rod):
     
+    #routing the CSV files to the code
     allFiles = {
         1: "C:\\Users\\dcnat\\OneDrive\\Desktop\\fishy-game\\data\\BambooRod.csv",
         2: "C:\\Users\\dcnat\\OneDrive\\Desktop\\fishy-game\\data\\StoneRod.csv",
@@ -12,23 +21,36 @@ def fish(rod):
         #5: "data/God Rod.csv"
     }
     
+    #opens the CSV files and adds them to a list
     with open(allFiles[rod], newline = '') as csvfile:
         fishreader = csv.reader(csvfile)
         bigList = [fish for row in fishreader for fish in row]
 
+    #chooses a random fish
     randomFish = random.choice(bigList)
 
     return randomFish
 
+def inventory():
+    print(f"You have: {currency} dollars and these items: ")
+    for fishies, count in fishInventory.items():
+        if count > 0:
+            #self note. f" is a string literal {} <-- contains the string. Very useful
+            #need to edit this into a for loop that gives all fishes
+            return(f"{fishies}: {count}")
+    
 
+#main function
 def main():
     currency = 0;
     gameContinue = True;
     
-    '''print("Welcome to Cloudy's fishing village! There are 4 commands in the game. You can 'fish', 'inventory', 'store', or 'achievements'. \nThe commands will let you fish, check your inventory, check the store, or go to the achievements page respectively. Have fun!")
-    print("To exit the game, type 'exit'.")
+    #print("Welcome to Cloudy's fishing village! There are 4 commands in the game. You can 'fish', 'inventory', 'store', or 'achievements'. \nThe commands will let you fish, check your inventory, check the store, or go to the achievements page respectively. Have fun!")
+    #print("To exit the game, type 'exit'.")
+
+    print(inventory())
     
-    while(gameContinue == True):
+    '''while(gameContinue == True):
             userInput = input("\n\nWhat would you like to do?")
 
             if(userInput == "fish"):
@@ -47,11 +69,8 @@ def main():
                 gameContinue = False;
             else:
                 print("That was an invalid response. Please try again.")
+            
             '''
-    print(fish(1))
-            
-            
-
 
 if __name__ == "__main__":
     main()
